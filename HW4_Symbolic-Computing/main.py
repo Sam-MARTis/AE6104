@@ -1,18 +1,10 @@
 from sympy import *
 import numpy as np
 init_printing()
-r = symbols('r')
-th = symbols('th')
-ph = symbols('ph')
 
-u = [r, th, ph]
+
+# u = [r, th, ph]
 # x, y, z = r*cos(ph)*cos(th),  r*cos(ph)*sin(th), r*sin(ph)
-def fx1(u1, u2, u3):
-    return u1*cos(u3)*cos(u2)
-def fx2(u1, u2, u3):
-    return u1*cos(u3)*sin(u2)
-def fx3(u1, u2, u3):
-    return u1*sin(u3)
 
 def getFeaturesOfCoordinates(fx1, fx2, fx3, u1, u2, u3):
     x = fx1(u1, u2, u3)
@@ -65,24 +57,76 @@ def getFeaturesOfCoordinates(fx1, fx2, fx3, u1, u2, u3):
 
     return rvec, gCovCov, gConCon, christoffelFirstKind, christoffelSecondKind
 
-rvec, gCovCov, gConCon, christoffelFirstKind, christoffelSecondKind = getFeaturesOfCoordinates(fx1, fx2, fx3, r, th, ph)
-
-print(latex(christoffelFirstKind))
 
 
+# For spherial coordinates
+r_sph = symbols('r')
+th_sph = symbols('th')
+ph_sph = symbols('ph')
 
-a1 = symbols('a1')
-a2 = symbols('a2')
-a3 = symbols('a3')
 
-a = [a1, a2, a3]
-amiCovDiff = [[0 for _ in range(3)] for __ in range(3)]
+def fx1_sph(r, theta, phi):
+    return r*cos(phi)*cos(theta)
+def fx2_sph(r, theta, phi):
+    return r*cos(phi)*sin(theta)
+def fx3_sph(r, theta, phi):
+    return r*sin(phi)
 
-for m in range(3):
-    for i in range(3):
-        a[m][i] = diff(a[m], u[i])
-        for k in range(3):
-            amiCovDiff[m][i] += a[k]*christoffelFirstKind[k][i][m]
+
+rvec_sph, gCovCov_sph, gConCon_sph, christoffelFirstKind_sph, christoffelSecondKind_sph = getFeaturesOfCoordinates(fx1_sph, fx2_sph, fx3_sph, r_sph, th_sph, ph_sph)
+
+
+# For cylindrical coordinates
+z_cyl = symbols('z')
+r_cyl = symbols('r')
+th_cyl = symbols('th')
+def fx1_cyl(r, theta, z):
+    return r*cos(theta)
+def fx2_cyl(r, theta, z):
+    return r*sin(theta)
+def fx3_cyl(r, theta, z):
+    return z
+
+rvec_cyl, gCovCov_cyl, gConCon_cyl, christoffelFirstKind_cyl, christoffelSecondKind_cyl = getFeaturesOfCoordinates(fx1_cyl, fx2_cyl, fx3_cyl, r_cyl, th_cyl, z_cyl)
+
+
+# Toroidal coordinates
+r_tor = symbols('r')
+th_tor = symbols('th')
+ph_tor = symbols('ph')
+R = symbols('R')
+def fx1_tor(r, theta, phi):
+    return (R - r*cos(theta))*cos(phi)
+def fx2_tor(r, theta, phi):
+    return (R - r*cos(theta))*sin(phi)
+def fx3_tor(r, theta, phi):
+    return r*sin(theta)
+
+rvec_tor, gCovCov_tor, gConCon_tor, christoffelFirstKind_tor, christoffelSecondKind_tor = getFeaturesOfCoordinates(fx1_tor, fx2_tor, fx3_tor, r_tor, th_tor, ph_tor)
+
+print(gCovCov_sph[1][1])
+print(gCovCov_cyl[1][1])
+print(gCovCov_tor[1][1])
+
+
+
+# print(latex(christoffelFirstKind))
+# print(christoffelFirstKind)
+
+
+
+# a1 = symbols('a1')
+# a2 = symbols('a2')
+# a3 = symbols('a3')
+
+# a = [a1, a2, a3]
+# amiCovDiff = [[0 for _ in range(3)] for __ in range(3)]
+
+# for m in range(3):
+#     for i in range(3):
+#         a[m][i] = diff(a[m], u[i])
+#         for k in range(3):
+#             amiCovDiff[m][i] += a[k]*christoffelFirstKind[k][i][m]
 
 
 
