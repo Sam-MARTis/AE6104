@@ -106,7 +106,233 @@ rvec_tor, gCovCov_tor, gConCon_tor, christoffelFirstKind_tor, christoffelSecondK
 
 
 if __name__ == "__main__":
-    print(gCovCov_sph[1][1])
-    print(gCovCov_cyl[1][1])
-    print(gCovCov_tor[1][1])
+    # print(gCovCov_sph[1][1])
+    # print(gCovCov_cyl[1][1])
+    # print(gCovCov_tor[1][1])
+    print("\033c")
+    print("Spherical coordinates r vector")
+    for i in rvec_sph:
+        print(i)
+    print()
+    print("Cylindrical coordinates r vector")
+    for i in rvec_cyl:
+        print(i)
+    print()
+    print("Toroidal coordinates r vector")
+    for i in rvec_tor:
+        print(i)
+    print("\n\n\n\n\n\n")
+    print("Spherical coordinates covarient metric tensor")
+    for i in gCovCov_sph:
+        print(i)
+    print()
+    print("Cylindrical coordinates covarient metric tensor")
+    for i in gCovCov_cyl:
+        print(i)
+    print()
+    print("Toroidal coordinates covarient metric tensor")
+    for i in gCovCov_tor:
+        print(i)
+    print("\n\n\n\n\n\n")
+    print("Christoffel symbols of the first kind for spherical coordinates")
+    for i in christoffelFirstKind_sph:
+        for j in i:
+            print(j)
+        print(i)
+    print()
+    print("Christoffel symbols of the first kind for cylindrical coordinates")
+    for i in christoffelFirstKind_cyl:
+        for j in i:
+            print(j)
+        print(i)
+    print()
+    print("Christoffel symbols of the first kind for toroidal coordinates")
+    for i in christoffelFirstKind_tor:
+        for j in i:
+            print(j)
+        print(i)
+    print("\n\n\n\n\n\n")
+    print("Christoffel symbols of the second kind for spherical coordinates")
+    for i in christoffelSecondKind_sph:
+        for j in i:
+            print(j)
+        print(i)
+    print()
+    print("Christoffel symbols of the second kind for cylindrical coordinates")
+    for i in christoffelSecondKind_cyl:
+        for j in i:
+            print(j)
+        print(i)
+    print()
+    print("Christoffel symbols of the second kind for toroidal coordinates")
+    for i in christoffelSecondKind_tor:
+        for j in i:
+            print(j)
+        print(i)
+    print("\n\n\n\n\n\n")
+    print("Spherical coordinates contravariant metric tensor")
+    for i in gConCon_sph:
+        print(i)
+    print()
+    print("Cylindrical coordinates contravariant metric tensor")
+    for i in gConCon_cyl:
+        print(i)
+    print()
+    print("Toroidal coordinates contravariant metric tensor")
+    for i in gConCon_tor:
+        print(i)
+    print("\n\n\n\n\n\n")
+    """
+    
+        Spherical coordinates r vector
+    r*cos(ph)*cos(th)
+    r*sin(th)*cos(ph)
+    r*sin(ph)
+
+    Cylindrical coordinates r vector
+    r*cos(th)
+    r*sin(th)
+    z
+
+    Toroidal coordinates r vector
+    (R - r*cos(th))*cos(ph)
+    (R - r*cos(th))*sin(ph)
+    r*sin(th)
+    
+    
+    
+    
+    Spherical coordinates covarient metric tensor
+    [1, 0, 0]
+    [0, r**2*cos(ph)**2, 0]
+    [0, 0, r**2]
+
+    Cylindrical coordinates covarient metric tensor
+    [1, 0, 0]
+    [0, r**2, 0]
+    [0, 0, 1]
+
+    Toroidal coordinates covarient metric tensor
+    [1, 0, 0]
+    [0, r**2, 0]
+    [0, 0, (R - r*cos(th))**2]
+
+
+
+
+
+
+
+    Christoffel symbols of the first kind for spherical coordinates
+    [0, 0, 0]
+    [0, 1.0*r*cos(ph)**2, 0]
+    [0, 0, 1.0*r]
+    [[0, 0, 0], [0, 1.0*r*cos(ph)**2, 0], [0, 0, 1.0*r]]
+    [0, 1.0*r*cos(ph)**2, 0]
+    [-1.0*r*cos(ph)**2, 0, 0.5*r**2*sin(2*ph)]
+    [0, -0.5*r**2*sin(2*ph), 0]
+    [[0, 1.0*r*cos(ph)**2, 0], [-1.0*r*cos(ph)**2, 0, 0.5*r**2*sin(2*ph)], [0, -0.5*r**2*sin(2*ph), 0]]
+    [0, 0, 1.0*r]
+    [0, -0.5*r**2*sin(2*ph), 0]
+    [-1.0*r, 0, 0]
+    [[0, 0, 1.0*r], [0, -0.5*r**2*sin(2*ph), 0], [-1.0*r, 0, 0]]
+
+    Christoffel symbols of the first kind for cylindrical coordinates
+    [0, 0, 0]
+    [0, 1.0*r, 0]
+    [0, 0, 0]
+    [[0, 0, 0], [0, 1.0*r, 0], [0, 0, 0]]
+    [0, 1.0*r, 0]
+    [-1.0*r, 0, 0]
+    [0, 0, 0]
+    [[0, 1.0*r, 0], [-1.0*r, 0, 0], [0, 0, 0]]
+    [0, 0, 0]
+    [0, 0, 0]
+    [0, 0, 0]
+    [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+    Christoffel symbols of the first kind for toroidal coordinates
+    [0, 0, 0]
+    [0, 1.0*r, 0]
+    [0, 0, 1.0*(-R + r*cos(th))*cos(th)]
+    [[0, 0, 0], [0, 1.0*r, 0], [0, 0, 1.0*(-R + r*cos(th))*cos(th)]]
+    [0, 1.0*r, 0]
+    [-1.0*r, 0, 0]
+    [0, 0, 1.0*r*(R - r*cos(th))*sin(th)]
+    [[0, 1.0*r, 0], [-1.0*r, 0, 0], [0, 0, 1.0*r*(R - r*cos(th))*sin(th)]]
+    [0, 0, 1.0*(-R + r*cos(th))*cos(th)]
+    [0, 0, 1.0*r*(R - r*cos(th))*sin(th)]
+    [1.0*(R - r*cos(th))*cos(th), 1.0*r*(-R + r*cos(th))*sin(th), 0]
+    [[0, 0, 1.0*(-R + r*cos(th))*cos(th)], [0, 0, 1.0*r*(R - r*cos(th))*sin(th)], [1.0*(R - r*cos(th))*cos(th), 1.0*r*(-R + r*cos(th))*sin(th), 0]]
+
+
+
+
+
+
+
+    Christoffel symbols of the second kind for spherical coordinates
+    [0, 0, 0]
+    [0, 1.0/r, 0]
+    [0, 0, 1.0/r]
+    [[0, 0, 0], [0, 1.0/r, 0], [0, 0, 1.0/r]]
+    [0, -1.0/r, 0]
+    [1.0*r*cos(ph)**2, 0, -0.5*sin(2*ph)]
+    [0, 1.0*tan(ph), 0]
+    [[0, -1.0/r, 0], [1.0*r*cos(ph)**2, 0, -0.5*sin(2*ph)], [0, 1.0*tan(ph), 0]]
+    [0, 0, -1.0/r]
+    [0, -1.0*tan(ph), 0]
+    [1.0*r, 0, 0]
+    [[0, 0, -1.0/r], [0, -1.0*tan(ph), 0], [1.0*r, 0, 0]]
+
+    Christoffel symbols of the second kind for cylindrical coordinates
+    [0, 0, 0]
+    [0, 1.0/r, 0]
+    [0, 0, 0]
+    [[0, 0, 0], [0, 1.0/r, 0], [0, 0, 0]]
+    [0, -1.0/r, 0]
+    [1.0*r, 0, 0]
+    [0, 0, 0]
+    [[0, -1.0/r, 0], [1.0*r, 0, 0], [0, 0, 0]]
+    [0, 0, 0]
+    [0, 0, 0]
+    [0, 0, 0]
+    [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+    Christoffel symbols of the second kind for toroidal coordinates
+    [0, 0, 0]
+    [0, 1.0/r, 0]
+    [0, 0, 1.0*cos(th)/(-R + r*cos(th))]
+    [[0, 0, 0], [0, 1.0/r, 0], [0, 0, 1.0*cos(th)/(-R + r*cos(th))]]
+    [0, -1.0/r, 0]
+    [1.0*r, 0, 0]
+    [0, 0, 1.0*r*sin(th)/(R - r*cos(th))]
+    [[0, -1.0/r, 0], [1.0*r, 0, 0], [0, 0, 1.0*r*sin(th)/(R - r*cos(th))]]
+    [0, 0, 1.0*cos(th)/(R - r*cos(th))]
+    [0, 0, 1.0*r*sin(th)/(-R + r*cos(th))]
+    [1.0*(-R + r*cos(th))*cos(th), 1.0*(R - r*cos(th))*sin(th)/r, 0]
+    [[0, 0, 1.0*cos(th)/(R - r*cos(th))], [0, 0, 1.0*r*sin(th)/(-R + r*cos(th))], [1.0*(-R + r*cos(th))*cos(th), 1.0*(R - r*cos(th))*sin(th)/r, 0]]
+
+
+
+
+
+
+
+    Spherical coordinates contravariant metric tensor
+    [1 0 0]
+    [0 1/(r**2*cos(ph)**2) 0]
+    [0 0 r**(-2)]
+
+    Cylindrical coordinates contravariant metric tensor
+    [1 0 0]
+    [0 r**(-2) 0]
+    [0 0 1]
+
+    Toroidal coordinates contravariant metric tensor
+    [1 0 0]
+    [0 r**(-2) 0]
+    [0 0 1/(R**2 - 2*R*r*cos(th) + r**2*cos(th)**2)]
+    """
+    
 
