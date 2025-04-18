@@ -104,36 +104,9 @@ def fx3_tor(r, theta, phi):
 
 rvec_tor, gCovCov_tor, gConCon_tor, christoffelFirstKind_tor, christoffelSecondKind_tor = getFeaturesOfCoordinates(fx1_tor, fx2_tor, fx3_tor, r_tor, th_tor, ph_tor)
 
-print(gCovCov_sph[1][1])
-print(gCovCov_cyl[1][1])
-print(gCovCov_tor[1][1])
 
+if __name__ == "__main__":
+    print(gCovCov_sph[1][1])
+    print(gCovCov_cyl[1][1])
+    print(gCovCov_tor[1][1])
 
-
-# print(latex(christoffelFirstKind))
-# print(christoffelFirstKind)
-
-
-
-# a1 = symbols('a1')
-# a2 = symbols('a2')
-# a3 = symbols('a3')
-
-# a = [a1, a2, a3]
-# amiCovDiff = [[0 for _ in range(3)] for __ in range(3)]
-
-# for m in range(3):
-#     for i in range(3):
-#         a[m][i] = diff(a[m], u[i])
-#         for k in range(3):
-#             amiCovDiff[m][i] += a[k]*christoffelFirstKind[k][i][m]
-
-
-
-
-# Tij = [[0 for _ in range(3)] for __ in range(3)]
-# TijDiff = [[[0 for _ in range(3)] for __ in range(3)] for __ in range(3)]
-# for i in range(3):
-#     for j in range(3):
-#         for k in range(3):
-#             TijDiff
