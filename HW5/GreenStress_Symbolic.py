@@ -48,13 +48,13 @@ def Cylinder():
     """
     The cylinder is pulled/compressed in the vertical direction while being twisted and this results in uniform(with respect to theta and z) radial defomation
     """
-    TH = symbols('TH')
-    PH = symbols('Ph')
+    TH = symbols('Θ')
+    PH = symbols('Φ')
     R = symbols('R')
     X3 = symbols('X3')
 
     f = Function('f')
-    l = symbols('l')
+    l = symbols('λ')
 
     r = f(R)
     th = TH + PH*X3
@@ -70,8 +70,8 @@ def Sphere():
     The sphere is being expanded/compressed radially in a uniform manner. Ex: Balloon
     """
     R = symbols('R')
-    TH = symbols('TH')
-    PH = symbols('PH')
+    TH = symbols('Θ')
+    PH = symbols('Φ')
     f = Function('f')
     
     r = f(R)
@@ -93,8 +93,8 @@ def Toroid():
     Can be thought of as a 2D deformation at every phi of a circle in the x-y plane with its origin being fixed.
     """
     R = symbols('R')
-    TH = symbols('TH')
-    PH = symbols('PH')
+    TH = symbols('Θ')
+    PH = symbols('Φ')
     C = symbols('C')
     f = Function('f')
     g = Function('g')
