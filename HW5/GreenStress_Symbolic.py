@@ -1,4 +1,4 @@
-from sympy import *
+from sympy import symbols, Function, Matrix, cos, sin, sqrt, diff, simplify
 
 
 def findGreenStrainTensor(ref_initial, ref_final, rvec_deformed, rvec_initial):
@@ -115,11 +115,6 @@ if __name__ == "__main__":
 
 
 
-
-# rvec_deformed = Matrix([r*cos(th), r*sin(th), x3])
-
-# function = symbols('function')
-# psi = symbols('psi')
 
 
 
