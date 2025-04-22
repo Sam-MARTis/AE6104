@@ -45,6 +45,9 @@ def findGreenStrainTensor(ref_initial, ref_final, rvec_deformed, rvec_initial):
 
 
 def Cylinder():
+    """
+    The cylinder is pulled/compressed in the vertical direction while being twisted and this results in uniform(with respect to theta and z) radial defomation
+    """
     TH = symbols('TH')
     PH = symbols('Ph')
     R = symbols('R')
@@ -63,6 +66,9 @@ def Cylinder():
     findGreenStrainTensor(ref_initial, ref_final, rvec_deformed, rvec_initial)
 
 def Sphere():
+    """
+    The sphere is being expanded/compressed radially in a uniform manner. Ex: Balloon
+    """
     R = symbols('R')
     TH = symbols('TH')
     PH = symbols('PH')
@@ -80,6 +86,12 @@ def Sphere():
     findGreenStrainTensor(ref_initial, ref_final, rvec_deformed, rvec_initial)
     
 def Toroid():
+    """
+    The circular cross section of the torois is being deformed. 
+    There is no twist the phi angle is unchanged.
+    Also there is no movement of the midpoint of the cross section as C is constant. 
+    Can be thought of as a 2D deformation at every phi of a circle in the x-y plane with its origin being fixed.
+    """
     R = symbols('R')
     TH = symbols('TH')
     PH = symbols('PH')
